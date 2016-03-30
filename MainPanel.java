@@ -248,7 +248,7 @@ public class MainPanel extends JPanel {
     
     /*refactored version of runContinuous.  The major change was removing the loop that changed _r then reset it*/
     public void runContinuous(){
-    	boolean _running=true;
+    	_running=true;
     	while(_running){
     		System.out.println("Running");
     		/*Try to sleep, if we can't catch the exception*/
