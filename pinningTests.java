@@ -22,23 +22,23 @@ public class pinningTests {
 		for (int i=0;i<100;i++)
 		{
 			int testInt=r.nextInt(Integer.MAX_VALUE); /*get some random positive int, as the original does not work with negatives*/
-			assertEquals(mp.convertToInt(testInt),mp.newConvertToInt(testInt));
+			assertEquals(mp.OldConvertToInt(testInt),mp.convertToInt(testInt));
 		}
 	}
 	@Test
 	public void toStringTest(){
 		Cell c= new Cell();
 		/*Test if a newly initialized Cell returns the same result*/
-		assertEquals(c.toString(),c.newToString());
+		assertEquals(c.OldToString(),c.toString());
 		/*Set the cell to dead, and verify the returns are the same*/
 		c.setAlive(false);
-		assertEquals(c.toString(),c.newToString());
+		assertEquals(c.OldToString(),c.toString());
 		/*Set the cell to alive, and verify the returns are the same*/
 		c.setAlive(true);
-		assertEquals(c.toString(),c.newToString());
+		assertEquals(c.OldToString(),c.toString());
 		/*Set the cell to dead again, and verify the returns are the same*/
 		c.setAlive(false);
-		assertEquals(c.toString(),c.newToString());
+		assertEquals(c.OldToString(),c.toString());
 			
 	}
 
