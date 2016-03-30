@@ -228,7 +228,7 @@ public class MainPanel extends JPanel {
      * Run the system continuously.
      */
 
-    public void runContinuous() {
+    public void oldRunContinuous() {
 	_running = true;
 	while (_running) {
 	    System.out.println("Running...");
@@ -244,6 +244,23 @@ public class MainPanel extends JPanel {
 	    backup();
 	    calculateNextIteration();
 	}
+    }
+    
+    /*refactored version of runContinuous.  The major change was removing the loop that changed _r then reset it*/
+    public void runContinuous(){
+    	boolean _running=true;
+    	while(_running){
+    		System.out.println("Running");
+    		/*Try to sleep, if we can't catch the exception*/
+    		try {
+    			Thread.sleep(20);
+    		}
+    		catch(InterruptedException iex){    		}
+    		
+    	/*backup and find the next iteration*/
+    		backup();
+    		calculateNextIteration();
+    	}
     }
 
     /**
