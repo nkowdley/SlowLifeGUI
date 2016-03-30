@@ -31,7 +31,7 @@ public class MainPanel extends JPanel {
 	return _cells;
     }
 
-    public int convertToInt(int x) {
+    public int OldConvertToInt(int x) {
 	int c = 0;
 	String padding = "0";
 	while (c < _r) {
@@ -50,7 +50,7 @@ public class MainPanel extends JPanel {
     /*This method takes an int, and returns the same int.  */ 
     /*The original method makes an the int a string, then  */
     /*parses the string as an int and returns it		   */
-    public int newConvertToInt(int x){
+    public int convertToInt(int x){
     	return x;
     }
     
