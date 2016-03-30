@@ -31,7 +31,7 @@ public class MainPanel extends JPanel {
 	return _cells;
     }
 
-    private int convertToInt(int x) {
+    public int convertToInt(int x) {
 	int c = 0;
 	String padding = "0";
 	while (c < _r) {
@@ -40,9 +40,18 @@ public class MainPanel extends JPanel {
 	    c++;
 	}
 	
+	
 	String n = padding + String.valueOf(x);
 	int q = Integer.parseInt(n);
 	return q;
+    }
+    
+    /*Refactored version of private int convertToInt(int x)*/
+    /*This method takes an int, and returns the same int.  */ 
+    /*The original method makes an the int a string, then  */
+    /*parses the string as an int and returns it		   */
+    public int newConvertToInt(int x){
+    	return x;
     }
     
     private int getNumNeighbors(int x, int y) {
