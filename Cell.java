@@ -48,6 +48,10 @@ public class Cell extends JButton {
 	}
 
     }
+    /*The original toString Method returns the string in a button.  Here is the refactored version*/
+    public String newToString(){
+    	return getText(); /*Get the new button string, and return it*/
+    }
     
     public void setAlive(boolean a) {
 	// note that "if (a)" and "if (a == true)"
