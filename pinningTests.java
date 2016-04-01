@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.util.Random;
 
+import org.junit.Before;
 import org.junit.Test;
 
 
@@ -20,19 +21,36 @@ public class pinningTests {
 	/*Initialize the main panel for unit tests--this needs to be global b/c to use a thread to test runContinuous*/
 	MainPanel mp = new MainPanel(10);
 	
+	@Before 
+	public void SetUp() {
+		mp.clear();
+		System.out.println("cleared main panel");
+	}
+	
 	@Test
 	public void convertToIntTest() {
 		/*for some 100 random inputs, test that convertToInt and the refactored newConvertToInt are identical*/
-		MainPanel mp_zero = new MainPanel('0'); /*create a new MainPanel with a size of 0*/
 		Random r = new Random();/*initialize the random*/
 		for (int i=0;i<100;i++)
 		{
 			int testInt=r.nextInt(Integer.MAX_VALUE); /*get some random positive int, as the original does not work with negatives*/
-			assertEquals(mp_zero.OldConvertToInt(testInt),mp_zero.convertToInt(testInt));
+			assertEquals(mp.OldConvertToInt(testInt),mp.convertToInt(testInt));
 		}
 	}
+	
 	@Test
-	public void toStringTest(){
+	public void convertToIntTestZero() {
+			int testInt=0; /*we are testing 0 here*/
+			assertEquals(mp.OldConvertToInt(testInt),mp.convertToInt(testInt));
+	}
+	
+	@Test
+	public void convertToIntTestMax() {
+			int testInt=Integer.MAX_VALUE; /*we are testing 0 here*/
+			assertEquals(mp.OldConvertToInt(testInt),mp.convertToInt(testInt));
+	}
+	@Test
+	public void toStringTestBeenAlive(){
 		Cell c= new Cell();
 		/*Test if a newly initialized Cell returns the same result*/
 		assertEquals(c.OldToString(),c.toString());
@@ -48,6 +66,27 @@ public class pinningTests {
 			
 	}
 	
+	@Test
+	public void toStringTestDead(){
+		Cell c= new Cell();
+		/*Test if a newly initialized Cell returns the same result*/
+		assertEquals(c.OldToString(),c.toString());
+		/*Set the cell to dead, and verify the returns are the same*/
+		c.setAlive(false);
+		assertEquals(c.OldToString(),c.toString());
+			
+	}
+	
+	@Test
+	public void toStringTestAlive(){
+		Cell c= new Cell();
+		/*Test if a newly initialized Cell returns the same result*/
+		assertEquals(c.OldToString(),c.toString());
+		/*Set the cell to dead, and verify the returns are the same*/
+		c.setAlive(true);
+		assertEquals(c.OldToString(),c.toString());
+			
+	}
 	/*Verify that run continuous works, by simulating a configuration which should result in a stable pattern after some
 	 * amount of iterations*/
 	@Test
